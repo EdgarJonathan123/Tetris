@@ -2,9 +2,13 @@
 #define MENSAJEINICIAL_H
 #include "LedControl.h"
 #include "Arduino.h"
+#include <MatrizSinDriver.h>
+
 class mensajeinicial
 {
 public:
+
+MatrizSinDriver matriz = MatrizSinDriver();
 
 const int mensaje[136] = {                           
                         B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,
