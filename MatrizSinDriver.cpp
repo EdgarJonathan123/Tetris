@@ -2,22 +2,29 @@
 
 MatrizSinDriver::MatrizSinDriver()
 {
+	for (size_t i = 0; i < 8; i++)
+		for (size_t j = 0; j < 8; j++)
+			panatalla[i][j] = 0;
 
 }
 
-void MatrizSinDriver::imprimirArreglo(int* matriz, int n) {
+void MatrizSinDriver::imprimirArreglo() {
 
-	for (int j = 0; j < n; ++j, ++matriz) {
-//		int lol = *matriz;
-	//	cout << lol << '\t';
+	//cout << "\n-------------actualizacion-----------\n";
+	for (size_t i = 0; i < 8; i++) {
+		for (size_t j = 0; j < 8; j++) {
+			//int num = panatalla[i][j];
+			//cout << "[" << num << "]";
+		}
+		//cout << "\n";
 	}
-//	cout << '\n';
+
 
 }
 
 void MatrizSinDriver::iniciarPuertos() {
 
-		initPort(f0, SALIDA);
+	initPort(f0, SALIDA);
 	initPort(f1, SALIDA);
 	initPort(f2, SALIDA);
 	initPort(f3, SALIDA);
@@ -35,23 +42,23 @@ void MatrizSinDriver::iniciarPuertos() {
 	initPort(c6, SALIDA);
 	initPort(c7, SALIDA);
 
-	setPin(f0, CERO);
-	setPin(f1, CERO);
-	setPin(f2, CERO);
-	setPin(f3, CERO);
-	setPin(f4, CERO);
-	setPin(f5, CERO);
-	setPin(f6, CERO);
-	setPin(f7, CERO);
+	setPin(f0, UNO);
+	setPin(f1, UNO);
+	setPin(f2, UNO);
+	setPin(f3, UNO);
+	setPin(f4, UNO);
+	setPin(f5, UNO);
+	setPin(f6, UNO);
+	setPin(f7, UNO);
 
-	setPin(c0, UNO);
-	setPin(c1, UNO);
-	setPin(c2, UNO);
-	setPin(c3, UNO);
-	setPin(c4, UNO);
-	setPin(c5, UNO);
-	setPin(c6, UNO);
-	setPin(c7, UNO);
+	setPin(c0, CERO);
+	setPin(c1, CERO);
+	setPin(c2, CERO );
+	setPin(c3, CERO);
+	setPin(c4, CERO);
+	setPin(c5, CERO);
+	setPin(c6, CERO);
+	setPin(c7, CERO);
 
 
 }
@@ -75,47 +82,41 @@ void MatrizSinDriver::setPin(int port, int state) {
 	}
 }
 
+void MatrizSinDriver::pintarPantalla() {
+		for (size_t i = 0; i < 8; i++)
+		{
+			for (size_t j = 0; j < 8; j++)
+			{
+				if (panatalla[i][j] == UNO) {
+					setPin(getNumCol(j), UNO);
+				//	delay(500);
+				}
+				else if (panatalla[i][j] == CERO) {
+					setPin(getNumCol(j), CERO);
+				//	delay(500);
+				}
+			}
+			setPin(getNumFila(i), CERO);
+		    delay(10);
+			setPin(getNumFila(i), UNO);
+		}
+}
+
 void  MatrizSinDriver::setRow(int fila, int coord) {
 
-	int tamanio = 8;
-	int* Fila = new int[tamanio];
-	Fila = getRow(coord, tamanio);
-
-	for (int i = 0; i < tamanio; i++) {
-			if (Fila[i] == UNO) {
-				setPin(getNumCol(i), CERO);
-			}
-			else if (Fila[i] == CERO) {
-				setPin(getNumCol(i), UNO);
-			}
-
-		}
-
-	for (size_t h = 0; h < 20; h++)
-	{
-
-		setPin(getNumFila(fila), CERO);
-		// delay(100);
-		setPin(getNumFila(fila), UNO);
-	    //delay(100);
-		setPin(getNumFila(fila), CERO);
 	
-	}
-
-
-
-	delete[] Fila;
+	//imprimirArreglo();
+	int tamanio = 8;
+	setRowPantalla(fila, coord, tamanio);
+	pintarPantalla();
+	
 }
 
 
-int* MatrizSinDriver::getRow(int coord, int tamanio) {
+void MatrizSinDriver::setRowPantalla(int fila, int coord, int tamanio) {
 
-	int* linea = new int[tamanio];
 
-	for (int j = 0; j < tamanio; j++)
-		linea[j] = 0;
-
-	int i = 0;
+	int col = 0;
 	int divs = 2;                  //Este sera nuestro divisor
 	int divd = coord;              //Este nuestro dividendo
 	int cociente = -1;
@@ -125,16 +126,22 @@ int* MatrizSinDriver::getRow(int coord, int tamanio) {
 		cociente = divd / divs;    //Aqui realizamos la operacion de la división
 		resid = divd % divs;       //Y aqui determinamos el modulo
 
-		linea[i] = resid;
+		panatalla[fila][col] = resid;
 
 		divd = cociente;
-		i++;
+		col++;
 	}
 
-	return linea;
+
 }
 
 void MatrizSinDriver::menu() {
+
+	setRow(0, 85);
+	setRow(1, 4);
+	setRow(2, 255);
+	setRow(4, 15);
+
 
 	/*	int tamanio = 16;
 		int* matriz = new int[tamanio];
@@ -158,83 +165,80 @@ void MatrizSinDriver::menu() {
 
 		imprimirArreglo(matriz, tamanio);
 		delete[] matriz;
-	
+
 
 	int tamanio = 8;
 	imprimirArreglo(getRow(2, tamanio), tamanio);
-	*/
-
-
 
 	system("pause");
-
+	*/
 }
+
 
 
 
 int MatrizSinDriver::getNumFila(int f) {
-	int result = 0;
 	switch (f)
 	{
 	case 0:
-		result = f0;
+		return f0;
 		break;
 	case 1:
-		result = f1;
+		return f1;
 		break;
 	case 2:
-		result = f2;
+		return f2;;
 		break;
 	case 3:
-		result = f3;
+		return f3;
 		break;
 	case 4:
-		result = f4;
+		return f4;
 		break;
 	case 5:
-		result = f5;
+		return f5;
 		break;
 	case 6:
-		result = f6;
+		return f6;
 		break;
 	case 7:
-		result = f7;
+		return f7;
 		break;
 	}
 
-	return result;
+	return 0;
 }
 
 
 int MatrizSinDriver::getNumCol(int c) {
-	int result = 0;
+
 	switch (c)
 	{
 	case 0:
-		result = c0;
+		return c0;
 		break;
 	case 1:
-		result = c1;
+		return c1;
 		break;
 	case 2:
-		result = c2;
+		return c2;
 		break;
 	case 3:
-		result = c3;
+		return c3;
 		break;
 	case 4:
-		result = c4;
+		return c4;
 		break;
 	case 5:
-		result = c5;
+		return c5;
 		break;
 	case 6:
-		result = c6;
+		return c6;
 		break;
 	case 7:
-		result = c7;
+		return c7;
 		break;
 	}
 
-	return result;
+	return 0;
 }
