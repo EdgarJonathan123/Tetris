@@ -10,7 +10,7 @@ mensajeinicial::mensajeinicial(){
   lc.setIntensity(0,10);
   lc.clearDisplay(0); 
 
-  matriz.iniciarPuertos();
+ // matriz.iniciarPuertos();
 
   }
  void mensajeinicial::actualizarMatriz(){
@@ -22,7 +22,7 @@ mensajeinicial::mensajeinicial(){
    for(int i=tmpinicio;i<=tmpfin;i++){
       lc.setRow(0,tmp,mensaje[i]);
 
-      matriz.setRow(tmp,mensaje[i]);
+    // matriz.setRow(tmp,mensaje[i]);
       
       tmp=tmp+1;
     }
@@ -30,6 +30,6 @@ mensajeinicial::mensajeinicial(){
     tmpinicio--;
     tmpfin--;
     
-    delay(100);
+    delay(50);
   
   }
