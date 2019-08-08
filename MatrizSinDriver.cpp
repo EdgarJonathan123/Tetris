@@ -110,7 +110,7 @@ void MatrizSinDriver::pintarPantalla()
 		}
 		//Serial.print("\n");
 		setPin(getNumFila(i), CERO);
-		delay(6);
+		delay(1);
 		setPin(getNumFila(i), UNO);
 	}
 }

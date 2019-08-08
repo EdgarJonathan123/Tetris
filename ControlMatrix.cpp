@@ -74,12 +74,64 @@ void ControlMatrix::paintgame(Variable *&_var)
 
     var = _var;
 
+    editgame();
+
     for (int i = 0; i < 8; i++)
     {
-            lc.setRow(0, i, var->Pantalla[i]);
-        
+        lc.setRow(0, i, var->Pantalla[i]);
     }
 
     matriz.setMatriz(var);
-    delay(100);
+     delay(100);
+}
+void ControlMatrix::editgame()
+{
+
+    if (state)
+    {
+        for (size_t i = 0; i < 16; i++)
+        {
+            if (i % 2 == 0)
+            {
+
+                var->Pantalla[i] = 4;
+            }
+            else
+            {
+                var->Pantalla[i] = 128;
+            }
+        }
+
+        state = false;
+    }
+    else
+    {
+        for (size_t i = 0; i < 16; i++)
+        {
+            if (i % 2 == 0)
+            {
+                var->Pantalla[i] = 128;
+            }
+            else
+            {
+                var->Pantalla[i] = 4;
+            }
+        }
+
+        state = true;
+    }
+
+    /* 
+    for (size_t i = 0; i < 16; i++)
+        {
+            if (i % 2 == 0)
+            {
+
+                var->Pantalla[i] = 4;
+            }
+            else
+            {
+                var->Pantalla[i] = 128;
+            }
+        }*/
 }

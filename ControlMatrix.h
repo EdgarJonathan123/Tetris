@@ -37,10 +37,14 @@ public:
     Variable*var;
     MatrizSinDriver matriz = MatrizSinDriver();
 
+
+    bool state = true;
+
     ControlMatrix();
     void iniciarPuertos();
     void mensajeInicial(Variable* &_var);
     void paintgame(Variable *&_var);
+    void editgame();
 };
 
 #endif
