@@ -34,10 +34,7 @@ void matriz::decimalBinario(int n){
 
 }
 void matriz::imprimir(){
-    for (int i=0; i<16;i++)
-    {
-        //cout<<"["<<xy[i][0]<<"]["<<xy[i][1]<<"]["<<xy[i][2]<<"]["<<xy[i][3]<<"]["<<xy[i][4]<<"]["<<xy[i][5]<<"]["<<xy[i][6]<<"]["<<xy[i][7]<<"]"<<endl;
-    }
+  
 
 }
 void matriz::simular(int y[4], int x[4]) {
@@ -53,18 +50,7 @@ void matriz::simular(int y[4], int x[4]) {
     xy2[(y[1])][(x[1])]=1;
     xy2[(y[2])][(x[2])]=1;
     xy2[(y[3])][(x[3])]=1;
-/* 
-    for(int y=0; y<16; y++){   //lo que muestra en pantalla
-        cout<<"["<<xy2[y][0]<<"]["
-            <<xy2[y][1]<<"]["
-            <<xy2[y][2]<<"]["
-            <<xy2[y][3]<<"]["
-            <<xy2[y][4]<<"]["
-            <<xy2[y][5]<<"]["
-            <<xy2[y][6]<<"]["
-            <<xy2[y][7]<<"]"<<endl;
-    }
-*/
+
   for (int vari = 0; vari < 16; ++vari) {
     
             int entero=
@@ -132,6 +118,7 @@ if(id==5){
             figurita.lim1X=0;
             figurita.lim2X=2;
             figurita.lim1Y=1;
+            id=1;
 
 }
 
