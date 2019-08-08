@@ -17,10 +17,12 @@ mensajeinicial::mensajeinicial(){
   }
  void mensajeinicial::actualizarMatriz(){
 
-    if(tmpinicio==0)tmpinicio=128;
+    /*if(tmpinicio==0)tmpinicio=128;
+    if(tmpfin==7)tmpfin=136;*/
+
+   if(tmpinicio==0)tmpinicio=120;
     if(tmpfin==7)tmpfin=136;
 
-  
    for(int i=tmpinicio;i<tmpfin;i++){
       lc.setRow(0,tmp,mensaje[i]);
 

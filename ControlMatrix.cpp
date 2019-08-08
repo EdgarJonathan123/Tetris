@@ -21,7 +21,7 @@ void ControlMatrix::mensajeInicial()
     if (tmpinicio == 0)
         tmpinicio = 120;
     if (tmpfin == 15)
-        tmpfin = 135;
+        tmpfin = 136;
 
     for (int i = tmpinicio; i <= tmpfin; i++)
     {
@@ -56,12 +56,15 @@ void ControlMatrix::paintgame()
 {
 
 
-    editgame();
+    //editgame();
 
     for (int i = 0; i < 8; i++)
     {
         lc.setRow(0, i, var->Pantalla[i]);
+        Serial.print("codigo recibe");
+        Serial.print(var->Pantalla[i]);
     }
+    Serial.println();
 
     matriz.setMatriz(var);
      
