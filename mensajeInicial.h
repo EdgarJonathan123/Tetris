@@ -8,7 +8,7 @@ class mensajeinicial
 {
 public:
 
-MatrizSinDriver matriz = MatrizSinDriver();
+//MatrizSinDriver matriz = MatrizSinDriver();
 
 const int mensaje[136] = {                           
                         B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,
