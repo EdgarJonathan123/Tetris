@@ -1,6 +1,6 @@
 #ifndef FIGURA_H
 #define FIGURA_H
-
+#include "Arduino.h"
 
 using namespace std;
 class figura
@@ -14,6 +14,7 @@ public:
     int x;
     int y;
     int rotacion=1;
+    int moises=0;   //por defecto 
 
     figura(int,int);
     int mov_bajar();

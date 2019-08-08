@@ -79,6 +79,7 @@ void matriz::choque(int y[4], int x[4]){
     //cout<<y[3]<<","<<x[3]<<endl;
 }
 void matriz::crearFigura(){
+    figurita.moises=0;
     figurita= figura(0,0);
     id++;
 
@@ -110,7 +111,7 @@ if(id==4){
             figurita.lim2X=1;
             figurita.lim1Y=1;
 }
-if(id==5){
+if(id==6){
             figurita.arrayY[0]=0;  figurita.arrayX[0]=0;
             figurita.arrayY[1]=0;  figurita.arrayX[1]=1;
             figurita.arrayY[2]=1;  figurita.arrayX[2]=1;
@@ -119,6 +120,7 @@ if(id==5){
             figurita.lim2X=2;
             figurita.lim1Y=1;
             id=1;
+            
 
 }
 
@@ -126,13 +128,16 @@ if(id==5){
 }
 
 void matriz::moverFiguritaAbajo(){
+    int enviar=0;
         int choque=figurita.mov_bajar();
         if(xy[figurita.arrayY[0]+1][figurita.arrayX[0]]==1)choque=1;
         if(xy[figurita.arrayY[1]+1][figurita.arrayX[1]]==1)choque=1;
         if(xy[figurita.arrayY[2]+1][figurita.arrayX[2]]==1)choque=1;
         if(xy[figurita.arrayY[3]+1][figurita.arrayX[3]]==1)choque=1;
-    if(figurita.lim1Y==15)choque=1;
+        if(figurita.lim1Y==15)choque=1;
+        
         if(choque==1){
+        
         //cout<<"topo con un objeto"<<endl;
         xy[figurita.arrayY[0]][figurita.arrayX[0]]=1;
         xy[figurita.arrayY[1]][figurita.arrayX[1]]=1;
@@ -140,9 +145,43 @@ void matriz::moverFiguritaAbajo(){
         xy[figurita.arrayY[3]][figurita.arrayX[3]]=1;
         //cout<<"mostrando la matriz"<<endl;
         //imprimir();
-        crearFigura();
+        
+    int minimum = figurita.arrayY[0];
+            for (int c = 1; c < 4; c++){
+                 if (figurita.arrayY[c] < minimum) minimum = figurita.arrayY[c];
+             }
+     //cout<<"minimo x->"<<minimum<<endl;
+     int compara= minimum;
+
+        Serial.print("el minimo ->");
+        Serial.println(compara);
+        if(compara==1){    
+            Serial.println("ya termino... :(");
+            
+                for (int i = 0; i < 16; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        xy[i][j]=0;
+                    }
+                    
+
+                }
+                crearFigura();
+                
+            
+            
+        }
+        else
+        {
+            crearFigura();
+             Serial.println("creo una figura...");
+        }
+        
+        
     }else {
         simular(figurita.arrayY,figurita.arrayX);
+       
     }
 }
 void matriz::moverFiguritaDerecha(){
@@ -185,14 +224,14 @@ void matriz::verigicarlinea(){
         }
         if(tmp2!=-1){
             for(int x=tmp2; x>-1; x--){
-            xy[tmp][0]=xy[tmp-1][0];
-            xy[tmp][1]=xy[tmp-1][1];
-            xy[tmp][2]=xy[tmp-1][2];
-            xy[tmp][3]=xy[tmp-1][3];
-            xy[tmp][4]=xy[tmp-1][4];
-            xy[tmp][5]=xy[tmp-1][5];
-            xy[tmp][6]=xy[tmp-1][6];
-            xy[tmp][7]=xy[tmp-1][7];
+            xy[x][0]=xy[x-1][0];
+            xy[x][1]=xy[x -1][1];
+            xy[x][2]=xy[x-1][2];
+            xy[x][3]=xy[x-1][3];
+            xy[x][4]=xy[x-1][4];
+            xy[x][5]=xy[x-1][5];
+            xy[x][6]=xy[x-1][6];
+            xy[x][7]=xy[x-1][7];
 
             }
             xy[0][0]=0;

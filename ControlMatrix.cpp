@@ -61,10 +61,10 @@ void ControlMatrix::paintgame()
     for (int i = 0; i < 8; i++)
     {
         lc.setRow(0, i, var->Pantalla[i]);
-        Serial.print("codigo recibe");
-        Serial.print(var->Pantalla[i]);
+       // Serial.print("codigo recibe");
+        //Serial.print(var->Pantalla[i]);
     }
-    Serial.println();
+    //Serial.println();
 
     matriz.setMatriz(var);
      
