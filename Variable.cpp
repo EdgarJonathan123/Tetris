@@ -1,4 +1,4 @@
-#include "Variable.h"
+   #include "Variable.h"
 Variable::Variable()
 {
 	Pantalla = new int[16];
