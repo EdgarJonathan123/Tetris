@@ -39,11 +39,11 @@ private:
 	int f4 = 30; int f5 = 32; int f6 = 34; int f7 = 36;
 
 	//-columnaas
-	int c7 = 23; int c6 = 25; int c5 = 27; int c4 = 29;
-	int c3 = 31; int c2 = 33; int c1 = 35; int c0 = 37;
+	int c0 = 23; int c1 = 25; int c2 = 27; int c3 = 29;
+	int c4 = 31; int c5 = 33; int c6 = 35; int c7 = 37;
 
 	Variable* var;
-	int linea[8];
+	int linea[8] ={0,0,0,0,0,0,0,0};
 
 
 	void setRowPantalla(int coord);

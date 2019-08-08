@@ -5,31 +5,28 @@ Variable::Variable()
 	for (int i = 0; i < 16; i++)
 		Pantalla[i]=0;
 
-		//defecto();
+		defecto();
 		//imprimir();
 
 }
 
 void Variable::defecto() {
+
+
 	for (int i = 0; i < 16; i++)
 	{
-		if (i%2==0) {
-			Pantalla[i] = 4;
-		}
-		else {
-			Pantalla[i] = 4;
+		if(i<8){
+			Pantalla[i]=4;
+		}else if(i>7&&i<11){
+			Pantalla[i]=1;
+		}else if(i>10 && i<16){
+			Pantalla[i]=128;
 		}
 	}
 }
 
 void Variable::imprimir(){
-/*
-for (int i = 0; i < 16; i++)
-{
 
-	Serial.Print(Pantalla[i]);
-	Serial.Print(",");
-}
-*/
+
 
 }

@@ -2,29 +2,28 @@
 
 #include "MatrizSinDriver.h"
 
-
 MatrizSinDriver::MatrizSinDriver()
 {
 	var = nullptr;
-	for (size_t i = 0; i < 8; i++)
-		linea[8] = 0;
 }
 
-void MatrizSinDriver::imprimirArreglo() {
+void MatrizSinDriver::imprimirArreglo()
+{
 
 	//cout << "\n-------------actualizacion-----------\n";
-	for (size_t i = 0; i < 8; i++) {
-		for (size_t j = 0; j < 8; j++) {
+	for (size_t i = 0; i < 8; i++)
+	{
+		for (size_t j = 0; j < 8; j++)
+		{
 			//int num = panatalla[i][j];
 			//cout << "[" << num << "]";
 		}
 		//cout << "\n";
 	}
-
-
 }
 
-void MatrizSinDriver::iniciarPuertos() {
+void MatrizSinDriver::iniciarPuertos()
+{
 
 	initPort(f0, SALIDA);
 	initPort(f1, SALIDA);
@@ -63,88 +62,114 @@ void MatrizSinDriver::iniciarPuertos() {
 	setPin(c7, CERO);
 }
 
-void MatrizSinDriver::initPort(int port, int state) {
+void MatrizSinDriver::initPort(int port, int state)
+{
 
-	if (state == ENTRADA) {
-	pinMode(port, INPUT);
+	if (state == ENTRADA)
+	{
+		pinMode(port, INPUT);
 	}
-	else if (state == SALIDA) {
-	pinMode(port, OUTPUT);
+	else if (state == SALIDA)
+	{
+		pinMode(port, OUTPUT);
 	}
-
 }
 
-void MatrizSinDriver::setPin(int port, int state) {
+void MatrizSinDriver::setPin(int port, int state)
+{
 
-	if (state == UNO) {
+	if (state == UNO)
+	{
 		digitalWrite(port, HIGH);
 	}
-	else if (state == CERO) {
+	else if (state == CERO)
+	{
 		digitalWrite(port, LOW);
 	}
-
 }
 
-void MatrizSinDriver::pintarPantalla() {
+void MatrizSinDriver::pintarPantalla()
+{
 
 	for (size_t i = 8; i < 16; i++)
 	{
+		//	if(i!=0){
+		//		setPin(getNumFila(i-1), UNO);
+		//	}
 		
+		/*if (i == 8)
+		{
+			Serial.print("\n");
+		}*/
 
 		setRowPantalla(var->Pantalla[i]);
 
 		for (size_t j = 0; j < 8; j++)
 		{
+			//Serial.print(linea[j]);
+			//Serial.print(",");
+
+		
 			switch (linea[j])
 			{
 			case 1:
-				setPin(getNumCol(j),UNO);
+				setPin(getNumCol(j), UNO);
 				break;
 			case 0:
 				setPin(getNumCol(j), CERO);
 				break;
-
 			}
 		}
 
-		setPin(getNumFila(i), CERO);
-		setPin(getNumFila(i), UNO);
-	}
+		Serial.print("\n");
 
+		setPin(getNumFila(i), CERO);
+		delay(6);
+		//if(i==15){
+		setPin(getNumFila(i), UNO);
+		//	}
+	}
 }
 
-void  MatrizSinDriver::setRow(int fila, int coord) {
+void MatrizSinDriver::setRow(int fila, int coord)
+{
 
 	//imprimirArreglo();
-	int tamanio = 8;
+	//int tamanio = 8;
 	//setRowPantalla(fila, coord, tamanio);
 	pintarPantalla();
-
 }
 
+void MatrizSinDriver::setRowPantalla(int coord)
+{
 
-void MatrizSinDriver::setRowPantalla(int coord) {
+	for (size_t i = 0; i < 8; i++)
+	{
+		linea[i]=0;
+	}
+	
 
+		
 	int col = 0;
-	int divs = 2;                  //Este sera nuestro divisor
-	int divd = coord;              //Este nuestro dividendo
+	int divs = 2;	 //Este sera nuestro divisor
+	int divd = coord; //Este nuestro dividendo
 	int cociente = -1;
 	int resid = -1;
 
-	while (cociente != 0) {
-		cociente = divd / divs;    //Aqui realizamos la operacion de la división
-		resid = divd % divs;       //Y aqui determinamos el modulo
+	while (cociente != 0)
+	{
+		cociente = divd / divs; //Aqui realizamos la operacion de la división
+		resid = divd % divs;	//Y aqui determinamos el modulo
 
 		linea[col] = resid;
 
 		divd = cociente;
 		col++;
 	}
-
-
 }
 
-void MatrizSinDriver::menu() {
+void MatrizSinDriver::menu()
+{
 
 	/*
 	setRow(0, 85);
@@ -152,7 +177,6 @@ void MatrizSinDriver::menu() {
 	setRow(2, 255);
 	setRow(4, 15);
 	*/
-
 
 	/*	int tamanio = 16;
 	int* matriz = new int[tamanio];
@@ -185,10 +209,8 @@ void MatrizSinDriver::menu() {
 	*/
 }
 
-
-
-
-int MatrizSinDriver::getNumFila(int f) {
+int MatrizSinDriver::getNumFila(int f)
+{
 	switch (f)
 	{
 	case 8:
@@ -198,7 +220,8 @@ int MatrizSinDriver::getNumFila(int f) {
 		return f1;
 		break;
 	case 10:
-		return f2;;
+		return f2;
+		;
 		break;
 	case 11:
 		return f3;
@@ -220,8 +243,8 @@ int MatrizSinDriver::getNumFila(int f) {
 	return 0;
 }
 
-
-int MatrizSinDriver::getNumCol(int c) {
+int MatrizSinDriver::getNumCol(int c)
+{
 
 	switch (c)
 	{
@@ -254,8 +277,8 @@ int MatrizSinDriver::getNumCol(int c) {
 	return 0;
 }
 
-
-void MatrizSinDriver::setMatriz(Variable* &_var) {
+void MatrizSinDriver::setMatriz(Variable *&_var)
+{
 	var = _var;
 	pintarPantalla();
 }
