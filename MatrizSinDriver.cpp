@@ -93,23 +93,11 @@ void MatrizSinDriver::pintarPantalla()
 
 	for (size_t i = 8; i < 16; i++)
 	{
-		//	if(i!=0){
-		//		setPin(getNumFila(i-1), UNO);
-		//	}
-		
-		/*if (i == 8)
-		{
-			Serial.print("\n");
-		}*/
-
 		setRowPantalla(var->Pantalla[i]);
-
 		for (size_t j = 0; j < 8; j++)
 		{
 			//Serial.print(linea[j]);
 			//Serial.print(",");
-
-		
 			switch (linea[j])
 			{
 			case 1:
@@ -120,14 +108,10 @@ void MatrizSinDriver::pintarPantalla()
 				break;
 			}
 		}
-
-		Serial.print("\n");
-
+		//Serial.print("\n");
 		setPin(getNumFila(i), CERO);
 		delay(6);
-		//if(i==15){
 		setPin(getNumFila(i), UNO);
-		//	}
 	}
 }
 
@@ -277,7 +261,7 @@ int MatrizSinDriver::getNumCol(int c)
 	return 0;
 }
 
-void MatrizSinDriver::setMatriz(Variable *&_var)
+void MatrizSinDriver::setMatriz(Variable* &_var)
 {
 	var = _var;
 	pintarPantalla();

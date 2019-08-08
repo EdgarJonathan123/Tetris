@@ -5,6 +5,8 @@ mensajeinicial::mensajeinicial(){
 
 
 }
+
+
  void mensajeinicial::inicializar(){
   lc.shutdown(0,false);
   lc.setIntensity(0,10);
@@ -30,6 +32,6 @@ mensajeinicial::mensajeinicial(){
     tmpinicio--;
     tmpfin--;
     
-    delay(50);
+   // delay(50);
   
   }
