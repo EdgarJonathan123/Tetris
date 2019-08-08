@@ -47,6 +47,7 @@ public:
     ControlMatrix(Variable* &_var);
     void iniciarPuertos();
     void mensajeInicial();
+    void setmsg(int* msg, int tamanio);
     void paintgame();
     void editgame();
 };

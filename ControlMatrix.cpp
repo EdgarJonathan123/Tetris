@@ -14,6 +14,38 @@ void ControlMatrix::iniciarPuertos()
     matriz.iniciarPuertos();
 }
 
+
+void ControlMatrix::setmsg(int* msg, int tamanio){
+
+  if (tmpinicio == 0)
+        tmpinicio = (tamanio-16);
+    if (tmpfin == 15)
+        tmpfin = tamanio;
+
+    for (int i = tmpinicio; i <= tmpfin; i++,++msg)
+    {
+        if (tmp < 8)
+        {
+            lc.setRow(0, tmp, *msg);
+        }
+        else if (tmp > 7 && tmp < 16)
+        {
+            var->Pantalla[tmp] = *msg;
+        }
+        tmp = tmp + 1;
+    }
+
+    Serial.print(";\n");
+
+    tmp = 0;
+    tmpinicio--;
+    tmpfin--;
+
+    matriz.setMatriz(var);
+
+
+}
+
 void ControlMatrix::mensajeInicial()
 {
 
