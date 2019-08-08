@@ -34,4 +34,13 @@ void Variable::defecto()
 
 void Variable::imprimir()
 {
+
+	
+}
+
+int* Variable::getNum(int num){
+
+
+
+
 }
