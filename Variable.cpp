@@ -1,37 +1,88 @@
-   #include "Variable.h"
+#include "Variable.h"
 Variable::Variable()
 {
-	Pantalla = new int[16];
+    Pantalla = new int[16];
 
-	for (int i = 0; i < 16; i++)
-		Pantalla[i] = 0;
-
-	defecto();
-	//imprimir();
+    for (int i = 0; i < 16; i++)
+        Pantalla[i] = 0;
 }
 
-void Variable::defecto()
+void Variable::setScore(int num)
 {
 
-	for (int i = 0; i < 16; i++)
-	{
-		/* if (i < 11)
-		{
-			Pantalla[i] = 4;
-		}
-		else if (i > 10 && i < 13)
-		{
-			Pantalla[i] = 1;
-		}
-		else if (i > 12 && i < 16)
-		{
-			Pantalla[i] = 128;
-		}*/
+    switch (num)
+    {
+    case 0:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = cero[i];
+        }
 
-		Pantalla[i]=4;
-	}
-}
+        break;
+    case 1:
 
-void Variable::imprimir()
-{
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = uno[i];
+        }
+        break;
+    case 2:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = dos[i];
+        }
+
+        break;
+    case 3:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = tres[i];
+        }
+        break;
+    case 4:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = cuatro[i];
+        }
+        break;
+    case 5:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = cinco[i];
+        }
+        break;
+    case 6:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = seis[i];
+        }
+        break;
+    case 7:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = siete[i];
+        }
+
+        break;
+    case 8:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = ocho[i];
+        }
+        break;
+    case 9:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] = nueve[i];
+        }
+        break;
+    case 10:
+        for (size_t i = 0; i < 8; i++)
+        {
+            score[i] =diez[i];
+        }
+        break;
+    default:
+        break;
+    }
 }

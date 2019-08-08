@@ -96,59 +96,5 @@ void ControlMatrix::paintgame()
 }
 void ControlMatrix::editgame()
 {
-
-    if (state)
-    {
-        for (size_t i = 0; i < 16; i++)
-        {
-            if (i % 2 == 0)
-            {
-
-                var->Pantalla[i] = 4;
-            }
-            else
-            {
-                var->Pantalla[i] = 128;
-            }
-        }
-
-        state = false;
-    }
-    else
-    {
-        for (size_t i = 0; i < 16; i++)
-        {
-            if (i % 2 == 0)
-            {
-                var->Pantalla[i] = 128;
-            }
-            else
-            {
-                var->Pantalla[i] = 4;
-            }
-        }
-
-        state = true;
-    }
-
-    /* 
-    for (size_t i = 0; i < 16; i++)
-        {
-            if (i % 2 == 0)
-            {
-
-                var->Pantalla[i] = 4;
-            }
-            else
-            {
-                var->Pantalla[i] = 128;
-            }
-        }*/
 }
 
-
-void getScore(int num){
-
-
-    
-}

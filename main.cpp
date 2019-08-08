@@ -1,5 +1,6 @@
 #include <ControlMatrix.h>
 #include "matriz.h"
+
 Variable *var = new Variable();
 ControlMatrix Matriz = ControlMatrix(var);
 int btn_derecha = 3;
@@ -54,9 +55,11 @@ if(digitalRead(btn_rotar)==HIGH){m.toInt();
     delay(valor/2);
   
   */
-  Matriz.setmsg(&(var->msderrota[0]),72);
+  //Matriz.setmsg(&(var->msderrota[0]),72);
   //  delay(100);
   //Matriz.setmsg(&(var->msvictoria[0]), 80);
+  var->setScore(7);
+  Matriz.setmsg(var->score, 72);
   Matriz.paintgame();
- // delay(100);
-}  
+  delay(100);
+}

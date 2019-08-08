@@ -47,7 +47,7 @@ public:
     void setmsg(int *msg, int tamanio);
     void paintgame();
     void editgame();
-    void getScore(int num);
+   
     
 
 };
