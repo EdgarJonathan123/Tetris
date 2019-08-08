@@ -157,7 +157,9 @@ void matriz::moverFiguritaIzquierda(){
 }
 
 void matriz::verigicarlinea(){
+    int tmp2=-1;
     for(int tmp=0; tmp<16; tmp++){
+        tmp2=-1;
              if(xy[tmp][0]==1&&
                 xy[tmp][1]==1&&
                 xy[tmp][2]==1&&
@@ -177,8 +179,32 @@ void matriz::verigicarlinea(){
             xy[tmp][6]=0;
             xy[tmp][7]=0;
             //aqui el codigo para aumentar score
+            score++;
+            tmp2=tmp;
            // cout<<"hay una linea completa!!!!!!!!! aumenta tu score"<<endl;
         }
+        if(tmp2!=-1){
+            for(int x=tmp2; x>-1; x--){
+            xy[tmp][0]=xy[tmp-1][0];
+            xy[tmp][1]=xy[tmp-1][1];
+            xy[tmp][2]=xy[tmp-1][2];
+            xy[tmp][3]=xy[tmp-1][3];
+            xy[tmp][4]=xy[tmp-1][4];
+            xy[tmp][5]=xy[tmp-1][5];
+            xy[tmp][6]=xy[tmp-1][6];
+            xy[tmp][7]=xy[tmp-1][7];
+
+            }
+            xy[0][0]=0;
+            xy[0][1]=0;
+            xy[0][2]=0;
+            xy[0][3]=0;
+            xy[0][4]=0;
+            xy[0][5]=0;
+            xy[0][6]=0;
+            xy[0][7]=0;
+        }
+
 
     }
 
