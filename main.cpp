@@ -1,7 +1,8 @@
 #include <ControlMatrix.h>
 
-ControlMatrix Matriz = ControlMatrix();
 Variable *var = new Variable();
+ControlMatrix Matriz = ControlMatrix(var);
+
 
 void setup()
 {
@@ -13,5 +14,5 @@ void loop()
 {
   Serial.print("\n-----------------Loop------------------\n");
   //Matriz.paintgame(var);
-  Matriz.mensajeInicial(var);
+  Matriz.mensajeInicial();
 }

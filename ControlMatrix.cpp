@@ -1,8 +1,8 @@
 #include "ControlMatrix.h"
 
-ControlMatrix::ControlMatrix()
+ControlMatrix::ControlMatrix(Variable* &_var)
 {
-    var = nullptr;
+    var = _var;
 }
 
 void ControlMatrix::iniciarPuertos()
@@ -14,10 +14,9 @@ void ControlMatrix::iniciarPuertos()
     matriz.iniciarPuertos();
 }
 
-void ControlMatrix::mensajeInicial(Variable *&_var)
+void ControlMatrix::mensajeInicial()
 {
 
-    var = _var;
 
     if (tmpinicio == 0)
         tmpinicio = 120;
@@ -53,10 +52,9 @@ void ControlMatrix::mensajeInicial(Variable *&_var)
     
 }
 
-void ControlMatrix::paintgame(Variable *&_var)
+void ControlMatrix::paintgame()
 {
 
-    var = _var;
 
     editgame();
 

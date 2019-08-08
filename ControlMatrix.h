@@ -32,6 +32,9 @@ public:
         B00000000, B00111000, B01000100, B01000100, B01111100, B01000100, B01000100, B01000100, //a
         B00000000, B00000000, B00000000, B00000000, B00000000, B00000000, B00000000, B00000000  //nada
     };
+
+
+    
     LedControl lc = LedControl(12, 10, 11, 1); //el ultimo parametro es el numero de modulos
 
     Variable*var;
@@ -40,10 +43,10 @@ public:
 
     bool state = true;
 
-    ControlMatrix();
+    ControlMatrix(Variable* &_var);
     void iniciarPuertos();
-    void mensajeInicial(Variable* &_var);
-    void paintgame(Variable *&_var);
+    void mensajeInicial();
+    void paintgame();
     void editgame();
 };
 
