@@ -8,7 +8,7 @@ ControlMatrix::ControlMatrix()
 void ControlMatrix::iniciarPuertos()
 {
     lc.shutdown(0, false);
-    lc.setIntensity(0, 10);
+    lc.setIntensity(0, 1);
     lc.clearDisplay(0);
 
     matriz.iniciarPuertos();
@@ -20,9 +20,9 @@ void ControlMatrix::mensajeInicial(Variable *&_var)
     var = _var;
 
     if (tmpinicio == 0)
-        tmpinicio = 121;
+        tmpinicio = 120;
     if (tmpfin == 15)
-        tmpfin = 136;
+        tmpfin = 135;
 
     for (int i = tmpinicio; i <= tmpfin; i++)
     {
@@ -31,29 +31,13 @@ void ControlMatrix::mensajeInicial(Variable *&_var)
         {
             lc.setRow(0, tmp, mensaje[i]);
 
-            Serial.print("[");
-            Serial.print(tmp);
-            //Serial.print(",");
-            //Serial.print(mensaje[i]);
-            Serial.print("]");
+         
         }
         else if (tmp > 7 && tmp < 16)
         {
             var->Pantalla[tmp] = mensaje[i];
 
-            Serial.print("[");
-            Serial.print(tmp);
-            //Serial.print(",");
-            //  Serial.print(mensaje[i]);
-            Serial.print("]");
-        }
-        else
-        {
-            Serial.print("[");
-            Serial.print(tmp);
-            //Serial.print(",");
-            //Serial.print(mensaje[i]);
-            Serial.print("]");
+           
         }
 
         tmp = tmp + 1;
@@ -66,7 +50,7 @@ void ControlMatrix::mensajeInicial(Variable *&_var)
     tmpfin--;
 
     matriz.setMatriz(var);
-    delay(100);
+    
 }
 
 void ControlMatrix::paintgame(Variable *&_var)
@@ -82,7 +66,7 @@ void ControlMatrix::paintgame(Variable *&_var)
     }
 
     matriz.setMatriz(var);
-     delay(100);
+     
 }
 void ControlMatrix::editgame()
 {

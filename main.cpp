@@ -12,5 +12,6 @@ void setup()
 void loop()
 {
   Serial.print("\n-----------------Loop------------------\n");
-  Matriz.paintgame(var);
+  //Matriz.paintgame(var);
+  Matriz.mensajeInicial(var);
 }

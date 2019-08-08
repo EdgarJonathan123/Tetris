@@ -21,7 +21,7 @@ mensajeinicial::mensajeinicial(){
     if(tmpfin==7)tmpfin=136;
 
   
-   for(int i=tmpinicio;i<=tmpfin;i++){
+   for(int i=tmpinicio;i<tmpfin;i++){
       lc.setRow(0,tmp,mensaje[i]);
 
     // matriz.setRow(tmp,mensaje[i]);

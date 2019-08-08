@@ -10,8 +10,8 @@
 class ControlMatrix
 {
 public:
-    int tmpinicio = 121;
-    int tmpfin = 136;
+    int tmpinicio = 120;
+    int tmpfin = 135;
     int tmp = 0;
 
     const int mensaje[136] = {
