@@ -18,6 +18,9 @@ matriz::matriz(int *matriz,int tam, Variable *& _var){
 
 
 }
+int matriz::verificarFin(){
+    return fin;
+}
 void matriz::decimalBinario(int n){
     int z,x,numero=n,n2=0;
     int binario[50];
@@ -168,6 +171,7 @@ void matriz::moverFiguritaAbajo(){
 
                 }
                 crearFigura();
+                fin=1;
                 
             
             

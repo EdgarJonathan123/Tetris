@@ -17,6 +17,7 @@ public:
     figura figurita=figura(0,0);
     int id=1;
     int score=0;
+    int fin=0;  //falso por defecto
     Variable  *var;
 
    //metodos
@@ -32,5 +33,6 @@ public:
     void verigicarlinea();
     void moverFiguritaRotar();
     void toInt();
+    int verificarFin();
 };
 #endif
